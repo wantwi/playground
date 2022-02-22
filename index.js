@@ -52,4 +52,41 @@ const capitalizeWord = (arr) => {
     .join(" ");
 };
 
-console.log(capitalizeWord("william antwi-boasiako"));
+// console.log(capitalizeWord("william antwi-boasiako"));
+
+//str should not contain numbers or symbols only letters
+const countLetter = (str) => {
+  let letter = [];
+  let count = 1;
+
+  str
+    .split("")
+    .sort((a, b) => a - b)
+    .forEach((el, i, arr) => {
+      if (arr[i] === arr[i + 1]) {
+        count++;
+      } else {
+        let value = `${count}${arr[i]}`;
+        letter = [...letter, value];
+        count = 1;
+      }
+    });
+
+  //return letter.join("");
+  return str.split("").sort((a, b) => b - a);
+};
+
+const countLetter1 = (str) => {
+  let strArr = str.split("");
+  let letters = [];
+
+  [...new Set(strArr)].forEach((el, i, arr) => {
+    let value = `${strArr.filter((x) => x === el).length}${el}`;
+
+    letters = [...letters, value];
+  });
+
+  return letters.join("");
+};
+
+console.log(countLetter1("gggggsssyyaagggg"));
